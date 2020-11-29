@@ -51,6 +51,7 @@ mas upgrade 2>&1
 brew bundle dump --force --file="./${brewFileName}"
 
 # Pushing to Repo
+echo "${green}==>${reset} Push changes to git repo ..."
 git add . 2>&1
 git commit -m "${DATE}_update" 2>&1
 git push 2>&1
