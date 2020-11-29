@@ -20,6 +20,7 @@ if [ -z $(which realpath) ]; then
 fi
 cd $(dirname "$(realpath "$0")")
 
+echo "${green}==>${reset} Checkout from git repo ..."
 git pull 2>&1
 
 # checks if mas, terminal-notifier are installed, if not will promt to install
