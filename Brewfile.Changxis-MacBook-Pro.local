@@ -10,6 +10,8 @@ brew "mas"
 brew "tree"
 cask "cmake"
 cask "dropbox"
+cask "mactex"
+cask "macvim"
 cask "sourcetree"
 cask "visual-studio-code"
 mas "Keynote", id: 409183694
