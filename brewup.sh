@@ -36,7 +36,7 @@ if [ -z $(which mas) ]; then
 fi
 
 # Brew Diagnotic
-echo "${yellow}==>${reset} Running Brew Diagnotic..."
+echo -e "\n${yellow}==>${reset} Running Brew Diagnotic..."
 brew doctor 2>&1
 brew missing 2>&1
 echo -e "${green}==>${reset} Brew Diagnotic Finished.\n"
@@ -47,13 +47,13 @@ brew update 2>&1
 brew outdated 2>&1
 brew upgrade 2>&1
 brew cleanup -s 2>&1
-echo "${green}==>${reset} Finished Updates.\n"
+echo -e "${green}==>${reset} Finished Updates.\n"
 
 # App Store Updates
 echo "${yellow}==>${reset} Running AppStore Updates..."
 mas outdated 2>&1
 mas upgrade 2>&1
-echo "${green}==>${reset} AppStore Updates Finished.\n"
+echo -e "${green}==>${reset} AppStore Updates Finished.\n"
 
 # Creating Dump File with hostname
 brew bundle dump --force --file="./${brewFileName}"
