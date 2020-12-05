@@ -1,8 +1,8 @@
 #!/bin/bash
 PATH="/usr/local/bin:/usr/local/sbin:/Users/${USER}/.local/bin:/usr/bin:/usr/sbin:/bin:/sbin"
-SCRIPT_DIR="$( dirname "${BASH_SOURCE[0]}" )"
 
-$SCRIPT_DIR/pip-up.sh
+#SCRIPT_DIR="$( dirname "${BASH_SOURCE[0]}" )"
+#$SCRIPT_DIR/pip-up.sh
 
 ## Fix for brew doctor warnings if using pyenv
 if which pyenv >/dev/null 2>&1; then
@@ -16,6 +16,10 @@ yellow=$(tput setaf 3)
 blue=$(tput setaf 4)
 reset=$(tput sgr0)
 brewFileName="Brewfile.${HOSTNAME}"
+
+echo "${yellow}==>${reset} Updating pip3 packages..."
+pip3 freeze --user | cut -d'=' -f1 | xargs -n1 pip3 install -U
+echo -e "${green}==>${reset} pip3 update Finished.\n"
 
 # Sets Working Dir as Real A Script Location
 if [ -z $(which realpath) ]; then
@@ -35,7 +39,7 @@ fi
 echo "${yellow}==>${reset} Running Brew Diagnotic..."
 brew doctor 2>&1
 brew missing 2>&1
-echo -e "${green}==>${reset} Brew Diagnotic Finished."
+echo -e "${green}==>${reset} Brew Diagnotic Finished.\n"
 
 # Brew packages update and cleanup
 echo "${yellow}==>${reset} Running Updates..."
@@ -43,12 +47,13 @@ brew update 2>&1
 brew outdated 2>&1
 brew upgrade 2>&1
 brew cleanup -s 2>&1
-echo "${green}==>${reset} Finished Updates"
+echo "${green}==>${reset} Finished Updates.\n"
 
 # App Store Updates
-echo "${green}==>${reset} Running AppStore Updates..."
+echo "${yellow}==>${reset} Running AppStore Updates..."
 mas outdated 2>&1
 mas upgrade 2>&1
+echo "${green}==>${reset} AppStore Updates Finished.\n"
 
 # Creating Dump File with hostname
 brew bundle dump --force --file="./${brewFileName}"
