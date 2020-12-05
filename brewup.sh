@@ -1,5 +1,8 @@
 #!/bin/bash
 PATH="/usr/local/bin:/usr/local/sbin:/Users/${USER}/.local/bin:/usr/bin:/usr/sbin:/bin:/sbin"
+SCRIPT_DIR="$( dirname "${BASH_SOURCE[0]}" )"
+
+$SCRIPT_DIR/pip-up.sh
 
 ## Fix for brew doctor warnings if using pyenv
 if which pyenv >/dev/null 2>&1; then
