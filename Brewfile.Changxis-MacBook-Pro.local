@@ -8,7 +8,7 @@ brew "coreutils"
 brew "cppcheck"
 brew "llvm"
 brew "mas"
-brew "qt", link: false
+brew "qt"
 brew "qt@5"
 brew "tree"
 cask "cmake"
